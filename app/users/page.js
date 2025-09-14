@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,9 @@ import UserTable from "@/components/UserTable";
 import PaginationControls from "@/components/PaginationControls";
 import { getUsers } from "@/lib/api";
 import { toast } from "sonner";
-export default function UsersPage() {
+
+// Separate the component that uses useSearchParams
+function UsersPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -220,8 +222,41 @@ export default function UsersPage() {
         onPageChange={handlePageChange}
         onLimitChange={handleLimitChange}
       />
-
-
     </div>
+  );
+}
+
+// Loading fallback component
+function UsersPageFallback() {
+  return (
+    <div className="container mx-auto p-6 space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold flex items-center gap-2">
+            <UsersIcon className="h-8 w-8" />
+            Dashboard
+          </h1>
+          <p className="text-muted-foreground mt-1">
+            Loading users...
+          </p>
+        </div>
+      </div>
+      
+      {/* Loading skeleton */}
+      <div className="space-y-4">
+        <div className="h-16 bg-gray-100 rounded-lg animate-pulse" />
+        <div className="h-64 bg-gray-100 rounded-lg animate-pulse" />
+        <div className="h-12 bg-gray-100 rounded-lg animate-pulse" />
+      </div>
+    </div>
+  );
+}
+
+// Main component with Suspense wrapper
+export default function UsersPage() {
+  return (
+    <Suspense fallback={<UsersPageFallback />}>
+      <UsersPageContent />
+    </Suspense>
   );
 }
