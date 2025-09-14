@@ -376,7 +376,7 @@ export default function SearchFilters({ onFiltersChange,userCount, className }) 
             </span>
             {filters.search && (
               <Badge variant="secondary" className="gap-1">
-                Search: "{filters.search}"
+                Search: &quot;{filters.search}&quot;
                 <Button
                   variant="ghost"
                   size="sm"
@@ -389,7 +389,7 @@ export default function SearchFilters({ onFiltersChange,userCount, className }) 
             )}
             {filters.name && (
               <Badge variant="secondary" className="gap-1">
-                Name: "{filters.name}"
+                Name: &quot;{filters.name}&quot;
                 <Button
                   variant="ghost"
                   size="sm"
@@ -402,7 +402,7 @@ export default function SearchFilters({ onFiltersChange,userCount, className }) 
             )}
             {filters.email && (
               <Badge variant="secondary" className="gap-1">
-                Email: "{filters.email}"
+                Email: &quot;{filters.email}&quot;
                 <Button
                   variant="ghost"
                   size="sm"
@@ -415,7 +415,7 @@ export default function SearchFilters({ onFiltersChange,userCount, className }) 
             )}
             {filters.country && (
               <Badge variant="secondary" className="gap-1">
-                Country: "{filters.country}"
+                Country: &quot;{filters.country}&quot;
                 <Button
                   variant="ghost"
                   size="sm"
