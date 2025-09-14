@@ -147,33 +147,33 @@ export default function SearchFilters({ onFiltersChange,userCount, className }) 
             All Users <span className="text-gray-500">{userCount}</span>
 
           </CardTitle>
-          <div className="flex items-center gap-2 w-1/2">
-        {/* Global Search */}
-        <div className="relative w-full">
-          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search"
-            value={filters.search}
-            onChange={(e) => handleFilterChange("search", e.target.value)}
-            className="pl-10 pr-10 w-full"
-          />
-          {filters.search && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => clearFilter("search")}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted"
-            >
-              <XIcon className="h-3 w-3" />
-            </Button>
-          )}
-        </div>
+          <div className="flex items-center justify-end gap-2 w-1/2">
+            {/* Global Search */}
+            <div className="hidden md:block relative md:w-full ">
+              <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search"
+                value={filters.search}
+                onChange={(e) => handleFilterChange("search", e.target.value)}
+                className="pl-10 pr-10 w-full"
+              />
+              {filters.search && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => clearFilter("search")}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted"
+                >
+                  <XIcon className="h-3 w-3" />
+                </Button>
+              )}
+            </div>
             {hasActiveFilters && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={clearAllFilters}
-                className="text-muted-foreground hover:text-foreground"
+                className="hidden md:flex text-muted-foreground hover:text-foreground"
               >
                 <XIcon className="h-4 w-4 mr-1" />
                 Clear All
@@ -188,7 +188,28 @@ export default function SearchFilters({ onFiltersChange,userCount, className }) 
               {showAdvanced? "Hide" : "Show"} Filters
             </Button>
           </div>
+
         </div>
+         {/* Global Search  - mobile */}
+          <div className="md:hidden relative w-full mt-4">
+            <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search"
+              value={filters.search}
+              onChange={(e) => handleFilterChange("search", e.target.value)}
+              className="pl-10 pr-10 w-full"
+            />
+            {filters.search && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => clearFilter("search")}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted"
+              >
+                <XIcon className="h-3 w-3" />
+              </Button>
+            )}
+          </div>
       </CardHeader>
 
       <CardContent className="space-y-4">
