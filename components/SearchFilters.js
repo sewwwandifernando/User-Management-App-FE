@@ -184,6 +184,7 @@ export default function SearchFilters({ onFiltersChange,userCount, className }) 
               size="sm"
               onClick={() => setShowAdvanced(!showAdvanced)}
             >
+              <FilterIcon/>
               {showAdvanced? "Hide" : "Show"} Filters
             </Button>
           </div>
