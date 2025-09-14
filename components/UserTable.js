@@ -422,15 +422,12 @@ export default function UserTable({
           </DialogHeader>
 
           {userToDelete && (
-            <div className="bg-muted p-4 rounded-lg space-y-2">
+            <div className="bg-muted p-4 rounded-lg space-y-2 text-sm">
               <div>
                 <strong>Name:</strong> {userToDelete.name}
               </div>
               <div>
                 <strong>Email:</strong> {userToDelete.email}
-              </div>
-              <div>
-                <strong>ID:</strong> {userToDelete.id}
               </div>
             </div>
           )}

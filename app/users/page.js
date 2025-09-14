@@ -67,13 +67,6 @@ export default function UsersPage() {
         setUsers(result.users || []);
         setPagination(result.pagination || {});
 
-        // Success toast for manual refresh
-        if (showRefreshIndicator) {
-          toast.success("Users refreshed successfully", {
-            description: `Found ${result.pagination?.totalItems || 0} users`,
-          });
-        }
-
         console.log("Users fetched successfully:", result);
       } catch (err) {
         console.error("Error fetching users:", err);
@@ -126,7 +119,7 @@ export default function UsersPage() {
   // Handle pagination changes
   const handlePageChange = useCallback((page) => {
     console.log("Page changed to:", page);
-    // PaginationControls component handles URL updates
+  // PaginationControls component handles URL updates
   }, []);
 
   const handleLimitChange = useCallback((limit) => {
@@ -160,7 +153,7 @@ export default function UsersPage() {
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
             <UsersIcon className="h-8 w-8" />
-            Welcome
+            Dashboard
           </h1>
           <p className="text-muted-foreground mt-1">
             Manage and view all users in the system

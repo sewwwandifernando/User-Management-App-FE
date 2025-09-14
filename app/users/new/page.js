@@ -12,12 +12,6 @@ export default function AddUserPage() {
 
   // Handle successful user creation
   const handleSuccess = (result) => {
-    console.log("User created successfully:", result);
-
-    // Success toast with redirect notification
-    toast.success("Redirecting to users list...", {
-      description: "New user has been created successfully",
-    });
 
     // Auto-redirect after 1.5 seconds
     setTimeout(() => {
@@ -59,7 +53,7 @@ export default function AddUserPage() {
             </Link>
           </Button>
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2">
+            <h1 className="text-2xl font-bold flex items-center gap-2">
               <UserPlusIcon className="h-8 w-8" />
               Add New User
             </h1>

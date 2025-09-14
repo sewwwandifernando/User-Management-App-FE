@@ -79,12 +79,6 @@ export default function EditUserPage() {
 
   // Handle successful user update
   const handleSuccess = (result) => {
-    console.log("User updated successfully:", result);
-
-    // Success toast with redirect notification
-    toast.success("Redirecting to users list...", {
-      description: "User has been updated successfully",
-    });
 
     // Auto-redirect after 1.5 seconds
     setTimeout(() => {
@@ -163,7 +157,7 @@ export default function EditUserPage() {
               </Link>
             </Button>
             <div>
-              <h1 className="text-3xl font-bold flex items-center gap-2">
+              <h1 className="text-2xl font-bold flex items-center gap-2">
                 <EditIcon className="h-8 w-8" />
                 Edit User
               </h1>
@@ -231,8 +225,8 @@ export default function EditUserPage() {
             </Link>
           </Button>
           <div className="flex-1">
-            <h1 className="text-3xl font-bold flex items-center gap-2">
-              <EditIcon className="h-8 w-8" />
+            <h1 className="text-2xl font-bold flex items-center gap-2">
+              <EditIcon className="h-6 w-6" />
               Edit User
             </h1>
             <p className="text-muted-foreground mt-1">
