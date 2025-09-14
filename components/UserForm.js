@@ -223,20 +223,11 @@ export default function UserForm({
       if (isEditMode) {
         result = await updateUser(user.id, apiData);
         toast.success("User updated successfully!", {
-          description: `${formData.name} has been updated`,
-          action: {
-            label: "View Users",
-            onClick: () => router.push("/users"),
-          },
         });
       } else {
         result = await createUser(apiData);
         toast.success("User created successfully!", {
           description: `${formData.name} has been added to the system`,
-          action: {
-            label: "View Users",
-            onClick: () => router.push("/users"),
-          },
         });
       }
 
@@ -298,22 +289,33 @@ export default function UserForm({
   const handleCancel = () => {
     if (hasChanges()) {
       toast("Unsaved changes detected", {
-        description: "Are you sure you want to leave without saving?",
-        action: {
-          label: "Leave anyway",
-          onClick: () => {
-            if (onCancel) {
-              onCancel();
-            } else {
-              router.push("/users");
-            }
-          },
-        },
-        cancel: {
-          label: "Continue editing",
-          onClick: () => {},
-        },
+        description: (
+          <div className="space-y-3">
+            <p>Are you sure you want to leave without saving?</p>
+            <div className="flex gap-2 justify-start">
+              <button
+                className="px-3 py-1 rounded-md bg-black text-white hover:bg-gray-800"
+                onClick={() => {
+                  if (onCancel) {
+                    onCancel();
+                  } else {
+                    router.push("/users");
+                  }
+                }}
+              >
+                Leave anyway
+              </button>
+              <button
+                className="px-3 py-1 rounded-md border hover:bg-gray-100"
+                onClick={() => {}}
+              >
+                Continue editing
+              </button>
+            </div>
+          </div>
+        ),
       });
+
     } else {
       if (onCancel) {
         onCancel();
@@ -577,19 +579,6 @@ export default function UserForm({
                 Cancel
               </Button>
             </div>
-
-            {/* Unsaved Changes Warning */}
-            {hasChanges() && !loading && (
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <div className="flex items-center gap-2 text-amber-700">
-                  <AlertCircleIcon className="h-4 w-4" />
-                  <span className="text-sm font-medium">Unsaved Changes</span>
-                </div>
-                <p className="text-xs text-amber-600 mt-1">
-                  You have unsaved changes. Make sure to save before leaving.
-                </p>
-              </div>
-            )}
           </form>
         </CardContent>
       </Card>
