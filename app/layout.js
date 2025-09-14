@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       >
         <header className="border-b">
           <div className="container mx-auto px-6 py-4">
-            <h1 className="text-xl font-bold">User Management</h1>
+            <h1 className="text-xl font-bold">User Management App</h1>
           </div>
         </header>
         <main>{children}</main>
